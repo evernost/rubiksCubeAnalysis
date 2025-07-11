@@ -14,7 +14,7 @@
 # =============================================================================
 # Description
 # =============================================================================
-# TODO
+# Notations
 #
 # ----
 # Misc
@@ -42,10 +42,56 @@ class Cube :
   # ---------------------------------------------------------------------------
   def __init__(self, size = 3) :
     self.size = size
+    self.state = [n for n in range(1, (6*size*size)+1)]
+
+
+
+  # ---------------------------------------------------------------------------
+  # METHOD: Cube.move()
+  # ---------------------------------------------------------------------------
+  def move(self, sequence) :
+    """
+    TODO
+    """
     
+    if (self.size == 2) :
+      for s in sequence :
+        if (s == "R") :
+          tmp = self.state[0]
+          self.state[0] = self.state[1]
+          self.state[1] = self.state[2]
+          self.state[2] = self.state[3]
+          self.state[3] = tmp
+
+          tmp = self.state[0]
+          self.state[0] = self.state[1]
+          self.state[1] = self.state[2]
+          self.state[2] = self.state[3]
+          self.state[3] = tmp
+
+
+    else :
+      print("[ERROR] This size is not supported.")
+
 
 
   # ---------------------------------------------------------------------------
-  # METHOD: Cube.XXX
+  # METHOD: Cube.shuffle()
   # ---------------------------------------------------------------------------
+  def shuffle(self) :
+    """
+    TODO
+    """
+    
+    print("[ERROR] The shuffle function is not supported.")
+
+
+
+  # ---------------------------------------------------------------------------
+  # METHOD: Cube._circShift()
+  # ---------------------------------------------------------------------------
+  def _circShift(self, ) :
+    """
+    TODO
+    """
   
