@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 # =============================================================================
-# Project         : Rubik's Cube Analysis
-# Module name     : Cube
-# File name       : cube.py
-# File type       : Python script (Python 3.10 or higher)
-# Purpose         : Cube object definition for the Rubik's Cube Analysis project
-# Author          : QuBi (nitrogenium@outlook.fr)
-# Creation date   : August 8th, 2024
+# Project       : Rubik's Cube Analysis
+# Module name   : Cube
+# File name     : cube.py
+# File type     : Python script (Python 3 or higher)
+# Purpose       : Cube object definition for the Rubik's Cube Analysis project
+# Author        : QuBi (nitrogenium@outlook.fr)
+# Creation date : August 8th, 2024
 # -----------------------------------------------------------------------------
 # Best viewed with space indentation (2 spaces)
 # =============================================================================
@@ -25,7 +25,7 @@
 
 
 # =============================================================================
-# External libs
+# EXTERNALS
 # =============================================================================
 # None.
 
@@ -49,7 +49,7 @@ class Cube :
   # ---------------------------------------------------------------------------
   # METHOD: Cube.move()
   # ---------------------------------------------------------------------------
-  def move(self, sequence) :
+  def move(self, sequence: str) -> None :
     """
     TODO
     """
@@ -94,4 +94,5 @@ class Cube :
     """
     TODO
     """
-  
+
+    pass
