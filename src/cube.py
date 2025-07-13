@@ -12,37 +12,32 @@
 # =============================================================================
 
 # =============================================================================
-# Description
-# =============================================================================
-# Notations
-#
-# ----
-# Misc
-# ---- 
-# 
-#
-
-
-
-# =============================================================================
 # EXTERNALS
 # =============================================================================
 # None.
 
 
 
-
-
-
-
 class Cube :
   
+  """
+  CUBE object
+  
+  The Cube object is a representation of an arbitrary sized Rubik's Cube.
+  It implements:
+  - a state variable representing the current state of the cube
+  - move methods reproducing the legal moves
+
+
+  """
+
+
   # ---------------------------------------------------------------------------
   # METHOD: Cube.__init__ (constructor)
   # ---------------------------------------------------------------------------
   def __init__(self, size = 3) :
     self.size = size
-    self.state = [n for n in range(1, (6*size*size)+1)]
+    self.state = [n for n in range(1, (6*size*size)+1)]   # State variable following the convention in '/resources/numbering__SxS.drawio'
 
 
 
@@ -51,7 +46,7 @@ class Cube :
   # ---------------------------------------------------------------------------
   def move(self, sequence: str) -> None :
     """
-    TODO
+    Performs the sequence of moves described in the 'sequence' string.
     """
     
     if (self.size == 2) :
@@ -80,7 +75,7 @@ class Cube :
   # ---------------------------------------------------------------------------
   def shuffle(self) :
     """
-    TODO
+    Shuffles the Rubik's Cube using a random combination of legal moves.
     """
     
     print("[ERROR] The shuffle function is not supported.")
