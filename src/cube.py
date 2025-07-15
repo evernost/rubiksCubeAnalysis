@@ -14,10 +14,13 @@
 # =============================================================================
 # EXTERNALS
 # =============================================================================
-# None.
+import json
 
 
 
+# =============================================================================
+# CLASS DEFINITION
+# =============================================================================
 class Cube :
   
   """
@@ -31,13 +34,31 @@ class Cube :
 
   """
 
-
-  # ---------------------------------------------------------------------------
-  # METHOD: Cube.__init__ (constructor)
-  # ---------------------------------------------------------------------------
   def __init__(self, size = 3) :
     self.size = size
     self.state = [n for n in range(1, (6*size*size)+1)]   # State variable following the convention in '/resources/numbering__SxS.drawio'
+
+    self._loadMoveDescriptor()
+
+
+
+
+  # ---------------------------------------------------------------------------
+  # METHOD: Cube._loadMoveDescriptor()                                [PRIVATE]
+  # ---------------------------------------------------------------------------
+  def _loadMoveDescriptor(self) -> None :
+    """
+    Loads the JSON file that describes how all faces are affected by each move
+    on the Rubik's Cube.
+
+    It is much clearer to have this info stored in a separate file as it would
+    make the code very messy for bigger sizes.
+    """
+    
+    moveDescriptorFile = f"./src/moveDescriptor__{self.size}x{self.size}.json"
+
+    with open(moveDescriptorFile, "r") as fileHandler :
+      self.moveDescriptor = json.load(fileHandler)
 
 
 
@@ -91,3 +112,15 @@ class Cube :
     """
 
     pass
+
+
+
+
+# =============================================================================
+# UNIT TESTS
+# =============================================================================
+if (__name__ == "__main__") :
+  
+  C = Cube(2)
+
+
