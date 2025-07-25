@@ -3,7 +3,7 @@
 # Project       : Rubik's Cube Analysis
 # Module name   : -
 # File name     : main.py
-# File type     : Python script (Python 3 or higher)
+# File type     : Python script (Python 3.9 or higher)
 # Purpose       : entry point
 # Author        : QuBi (nitrogenium@outlook.fr)
 # Creation date : Saturday, 26 October 2024

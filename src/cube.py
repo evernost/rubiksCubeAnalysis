@@ -3,7 +3,7 @@
 # Project       : Rubik's Cube Analysis
 # Module name   : Cube
 # File name     : cube.py
-# File type     : Python script (Python 3 or higher)
+# File type     : Python script (Python 3.9 or higher)
 # Purpose       : Cube object definition for the Rubik's Cube Analysis project
 # Author        : QuBi (nitrogenium@outlook.fr)
 # Creation date : August 8th, 2024
@@ -68,26 +68,63 @@ class Cube :
   def move(self, sequence: str) -> None :
     """
     Performs the sequence of moves described in the 'sequence' string.
+
+    Notation specification follows the one described here: https://kewbz.co.uk/
+    which can go up to Rubik's Cubes of size 7x7:
+    
+    SIMPLE MOVES (2x2 and above)
+    - F / F'
+    - R / R'
+    - U / U'
+    - B / B'
+    - L / L'
+    - D / D'
+    
+    DOUBLE SLICE MOVES (4x4 and above)
+    - Fw / Fw'
+    - Rw / Rw'
+
+    TRIPLE SLICE MOVES (5x5 and above)
+    - 3Fw / 3Fw'
+    - 3Rw / 3Rw'
+    - ...
+
+    Note: most of the moves above can be doubled:
+    - F2
+    - Fw2
+    - 3Fw2
+    - 4Fw2
+    - ...
+
+    However, the counter-clockwise version cannot be doubled (not necessary)
+
+    For readability, the sequence can be separated using whitespaces:
+    - move("F U' L2")
+    
+    See: 
+    - https://kewbz.co.uk/en-fr/blogs/notations-1/5x5-notation
+    - https://kewbz.co.uk/en-fr/blogs/notations-1/6x6-notation
+    - https://kewbz.co.uk/en-fr/blogs/notations-1/7x7-notations
     """
     
-    if (self.size == 2) :
-      for s in sequence :
-        if (s == "R") :
-          tmp = self.state[0]
-          self.state[0] = self.state[1]
-          self.state[1] = self.state[2]
-          self.state[2] = self.state[3]
-          self.state[3] = tmp
+    seq = self._moveParser(sequence)
 
-          tmp = self.state[0]
-          self.state[0] = self.state[1]
-          self.state[1] = self.state[2]
-          self.state[2] = self.state[3]
-          self.state[3] = tmp
+    for moveId in sequence :
+      for subMove in self.moveDescriptor[moveId]["perm"] :
+        pass
 
 
-    else :
-      print("[ERROR] This size is not supported.")
+
+  # ---------------------------------------------------------------------------
+  # METHOD: Cube._moveParser()
+  # ---------------------------------------------------------------------------
+  def _moveParser(self, sequence: str) -> list[str] :
+    """
+    Performs the sequence of moves described in the 'sequence' string.
+    """
+
+    
+
 
 
 
@@ -121,6 +158,17 @@ class Cube :
 # =============================================================================
 if (__name__ == "__main__") :
   
-  C = Cube(2)
+  print("[INFO] Library 'cube.py' called as main: running unit tests...")
 
+  assert(cpu._asmReaderConsumeSpace("nop")      == "nop")
+  assert(cpu._asmReaderConsumeSpace(" nop")     == "nop")
+  assert(cpu._asmReaderConsumeSpace(" nop  ")   == "nop  ")
+  assert(cpu._asmReaderConsumeSpace(" ,123 ")   == ",123 ")
+  assert(cpu._asmReaderConsumeSpace("  ;456  ") == ";456  ")
+  print("- Unit test passed: 'cpu._asmReaderConsumeSpace()'")
+
+
+
+  C = Cube(2)
+  C.move("LRUL'R'")
 
